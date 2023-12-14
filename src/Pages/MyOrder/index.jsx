@@ -1,14 +1,11 @@
-import './App.css'
-
-function App() {
-
+function MyOrder() {
   return (
     <>
     <div className='bg-red-100'>
-      lululul
+      MyOrder
     </div>
     </>
   )
 }
 
-export default App
+export default MyOrder
