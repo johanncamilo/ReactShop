@@ -1,11 +1,5 @@
-function Home() {
-  return (
-    <>
-    <div className='bg-red-100'>
-      Home
-    </div>
-    </>
-  )
+const Home = () => {
+  return <>Home</>
 }
 
 export default Home

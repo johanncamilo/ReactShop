@@ -1,11 +1,5 @@
-function MyOrders() {
-  return (
-    <>
-    <div className='bg-red-100'>
-      MyOrders
-    </div>
-    </>
-  )
+const MyOrders = () => {
+  return <>MyOrders</>
 }
 
 export default MyOrders

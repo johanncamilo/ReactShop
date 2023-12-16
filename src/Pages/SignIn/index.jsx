@@ -1,11 +1,5 @@
-function SignIn() {
-  return (
-    <>
-    <div className='bg-red-100'>
-      SignIn
-    </div>
-    </>
-  )
+const SignIn = () => {
+  return <>SignIn</>
 }
 
 export default SignIn

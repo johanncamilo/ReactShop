@@ -1,11 +1,5 @@
-function NotFound() {
-  return (
-    <>
-    <div className='bg-red-100'>
-      NotFound
-    </div>
-    </>
-  )
+const NotFound = () => {
+  return <>NotFound</>
 }
 
 export default NotFound
