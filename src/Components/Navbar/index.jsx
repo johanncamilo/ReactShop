@@ -14,11 +14,11 @@ const Navbar = () => {
   ]
 
   const rightnav = [
-    { to: undefined, text: 'milodevcool@gmail.com', className: 'text-black/60' },
+    { to: undefined, text: 'milodevcool@gmail.com', className: 'text-black/60 cursor-pointer' },
     { to: '/my-orders', text: 'my-orders', className: '' },
     { to: '/my-account', text: 'my-account', className: '' },
     { to: '/sign-in', text: 'sign-in', className: '' },
-    { to: undefined, text: '🛒 0', className: '' },
+    { to: undefined, text: '🛒 0', className: 'cursor-pointer' },
   ]
 
   const NavLinkClass = (isActive) => (isActive ? activeStyle : undefined)
