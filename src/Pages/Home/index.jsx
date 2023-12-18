@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Card from '../../Components/Card'
+import ProductDetail from '../../Components/ProductDetail'
 import { apiUrl } from '../../api'
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
           <Card key={item.id} data={item} />
         ))}
       </div>
+      <ProductDetail />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 
 const Navbar = () => {
@@ -18,10 +19,10 @@ const Navbar = () => {
 
   const rightnav = [
     { to: undefined, text: 'milodevcool@gmail.com', className: 'text-black/60 cursor-pointer' },
-    { to: '/my-orders', text: 'my-orders', className: '' },
-    { to: '/my-account', text: 'my-account', className: '' },
-    { to: '/sign-in', text: 'sign-in', className: '' },
-    { to: undefined, text: `🛒 ${context.counter}`, className: 'cursor-pointer' },
+    { to: '/my-orders', text: 'My Orders', className: '' },
+    { to: '/my-account', text: 'My Account', className: '' },
+    { to: '/sign-in', text: 'Sign In', className: '' },
+    { to: undefined, text: 'shopping-bag', className: 'cursor-pointer flex items-center' },
   ]
 
   const NavLinkClass = (isActive) => (isActive ? activeStyle : undefined)
@@ -48,6 +49,10 @@ const Navbar = () => {
                 <NavLink to={to} className={({ isActive }) => NavLinkClass(isActive)}>
                   {text}
                 </NavLink>
+              ) : text === 'shopping-bag' ? (
+                <>
+                  <ShoppingBagIcon className='h-6 w-6 text-black-500' /> &nbsp; <div>{context.counter}</div>
+                </>
               ) : (
                 <>{text}</>
               )}
