@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ShoppingCartContext } from '../../Context'
 
 const Navbar = () => {
+  const context = useContext(ShoppingCartContext)
   const activeStyle = 'underline underline-offset-4'
 
   const leftnav = [
@@ -18,7 +21,7 @@ const Navbar = () => {
     { to: '/my-orders', text: 'my-orders', className: '' },
     { to: '/my-account', text: 'my-account', className: '' },
     { to: '/sign-in', text: 'sign-in', className: '' },
-    { to: undefined, text: '🛒 0', className: 'cursor-pointer' },
+    { to: undefined, text: `🛒 ${context.counter}`, className: 'cursor-pointer' },
   ]
 
   const NavLinkClass = (isActive) => (isActive ? activeStyle : undefined)

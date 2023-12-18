@@ -1,7 +1,15 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 
-const ShoppingCartContext = createContext()
+/**
+ * exporta el @createContext para ser consumido por componentes hijos usando @useContext
+ */
+export const ShoppingCartContext = createContext()
 
+/**
+ * exporta el @Provider para instanciarlo como wrapper en componentes padre
+ */
 export const ShoppingCartProvider = ({ children }) => {
-  return <ShoppingCartContext.Provider>{children}</ShoppingCartContext.Provider>
+  const [counter, setCounter] = useState(0)
+
+  return <ShoppingCartContext.Provider value={{ counter, setCounter }}>{children}</ShoppingCartContext.Provider>
 }
