@@ -18,7 +18,7 @@ const Navbar = () => {
   ]
 
   const rightnav = [
-    { to: undefined, text: 'milodevcool@gmail.com', className: 'text-black/60 cursor-pointer' },
+    { to: undefined, text: 'milodevcool@gmail.com', className: 'text-white font-bold cursor-pointer' },
     { to: '/my-orders', text: 'My Orders', className: '' },
     { to: '/my-account', text: 'My Account', className: '' },
     { to: '/sign-in', text: 'Sign In', className: '' },
@@ -28,7 +28,7 @@ const Navbar = () => {
   const NavLinkClass = (isActive) => (isActive ? activeStyle : undefined)
 
   return (
-    <nav className='flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light bg-white'>
+    <nav className='flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light bg-black/80 text-white shadow-2xl'>
       <ul className='flex items-center gap-3'>
         {leftnav.map(({ to, text, className }) => {
           return (
@@ -51,7 +51,7 @@ const Navbar = () => {
                 </NavLink>
               ) : text === 'shopping-bag' ? (
                 <>
-                  <ShoppingBagIcon className='h-6 w-6 text-black-500' onClick={() => toggleProductDetail()} /> &nbsp;{' '}
+                  <ShoppingBagIcon className='h-6 w-6 text-white' onClick={() => toggleProductDetail()} /> &nbsp;{' '}
                   <div className='font-bold'>{counter}</div>
                 </>
               ) : (

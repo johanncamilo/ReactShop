@@ -11,11 +11,16 @@ const Card = ({ data }) => {
   /**
    * @useContext lee el estado global
    */
-  const { counter, setCounter, openProductDetail, setProductToShow } = useContext(ShoppingCartContext)
+  const { counter, setCounter, toggleProductDetail, setProductToShow, shoppingCart, setShoppingCart } = useContext(ShoppingCartContext)
 
   const showProduct = (productDetail) => {
-    openProductDetail()
+    toggleProductDetail()
     setProductToShow(productDetail)
+  }
+
+  const addProductsToCart = (productData) => {
+    setCounter(counter + 1)
+    setShoppingCart([...shoppingCart, productData])
   }
 
   return (
@@ -27,7 +32,7 @@ const Card = ({ data }) => {
           className='absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2'
           onClick={(e) => {
             e.stopPropagation()
-            setCounter(counter + 1)
+            addProductsToCart(data)
           }}
         >
           <PlusCircleIcon className='h-6 w-6 text-black-500' />
