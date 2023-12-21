@@ -9,27 +9,25 @@ export const ShoppingCartContext = createContext()
  * exporta el @Provider para instanciarlo como wrapper en componentes padre
  */
 export const ShoppingCartProvider = ({ children }) => {
-  /**
-   * SHOPPING CART COUNTER
-   */
+  // Shopping Cart Counter
   const [counter, setCounter] = useState(0)
 
-  /**
-   * TOGGLERS
-   */
-  const [isProductDetailOpen, setIsProductDetailOpen] = useState()
+  // Toggle Product Detail
+  const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
   const toggleProductDetail = () => setIsProductDetailOpen(!isProductDetailOpen)
   const openProductDetail = () => setIsProductDetailOpen(true)
   const closeProductDetail = () => setIsProductDetailOpen(false)
 
-  /**
-   * SHOW PRODUCT DETAIL
-   */
+  // Toggle Checkout Side Menu
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false)
+  const toggleCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(!isCheckoutSideMenuOpen)
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
+
+  // Show Product Detail
   const [productToShow, setProductToShow] = useState({})
 
-  /**
-   * SHOPPING CART
-   */
+  // Shopping Cart - Add products to cart
   const [shoppingCart, setShoppingCart] = useState([])
 
   return (
@@ -41,6 +39,10 @@ export const ShoppingCartProvider = ({ children }) => {
         openProductDetail,
         closeProductDetail,
         isProductDetailOpen,
+        toggleCheckoutSideMenu,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        isCheckoutSideMenuOpen,
         productToShow,
         setProductToShow,
         shoppingCart,

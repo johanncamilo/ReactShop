@@ -11,16 +11,29 @@ const Card = ({ data }) => {
   /**
    * @useContext lee el estado global
    */
-  const { counter, setCounter, toggleProductDetail, setProductToShow, shoppingCart, setShoppingCart } = useContext(ShoppingCartContext)
+  const {
+    counter,
+    setCounter,
+    closeProductDetail,
+    openProductDetail,
+    setProductToShow,
+    shoppingCart,
+    setShoppingCart,
+    openCheckoutSideMenu,
+    closeCheckoutSideMenu,
+  } = useContext(ShoppingCartContext)
 
   const showProduct = (productDetail) => {
-    toggleProductDetail()
+    closeCheckoutSideMenu()
+    openProductDetail()
     setProductToShow(productDetail)
   }
 
   const addProductsToCart = (productData) => {
     setCounter(counter + 1)
     setShoppingCart([...shoppingCart, productData])
+    closeProductDetail()
+    openCheckoutSideMenu()
   }
 
   return (
