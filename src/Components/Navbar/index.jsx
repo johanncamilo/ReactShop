@@ -41,6 +41,7 @@ const Navbar = () => {
         })}
       </ul>
 
+      {/* Conditional Rendering */}
       <ul className='flex items-center gap-3'>
         {rightnav.map(({ to, text, className }) => {
           return (
