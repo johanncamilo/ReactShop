@@ -4,7 +4,7 @@ import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 
 const Navbar = () => {
-  const { counter, toggleProductDetail } = useContext(ShoppingCartContext)
+  const { counter, toggleCheckoutSideMenu } = useContext(ShoppingCartContext)
   const activeStyle = 'underline underline-offset-4'
 
   const leftnav = [
@@ -52,7 +52,7 @@ const Navbar = () => {
                 </NavLink>
               ) : text === 'shopping-bag' ? (
                 <>
-                  <ShoppingBagIcon className='h-6 w-6 text-white' onClick={() => toggleProductDetail()} /> &nbsp;{' '}
+                  <ShoppingBagIcon className='h-6 w-6 text-white' onClick={() => (counter > 0 ? toggleCheckoutSideMenu() : {})} /> &nbsp;{' '}
                   <div className='font-bold'>{counter}</div>
                 </>
               ) : (

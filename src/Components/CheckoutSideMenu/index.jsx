@@ -6,7 +6,16 @@ import OrderCard from '../../Components/OrderCard'
 import './styles.css'
 
 const CheckoutSideMenu = () => {
-  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, shoppingCart } = useContext(ShoppingCartContext)
+  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, shoppingCart, setShoppingCart, counter, setCounter } = useContext(ShoppingCartContext)
+
+  const handleDelete = (id) => {
+    const filteredProducts = shoppingCart.filter((product) => product.id != id)
+
+    setShoppingCart(filteredProducts)
+    setCounter(counter - 1)
+
+    if (filteredProducts.length < 1) closeCheckoutSideMenu()
+  }
   return (
     <aside
       className={`${
@@ -21,7 +30,7 @@ const CheckoutSideMenu = () => {
       </div>
       <div className='px-6'>
         {shoppingCart.map(({ id, title, image, price }) => (
-          <OrderCard key={id} title={title} image={image} price={price} />
+          <OrderCard key={id} id={id} title={title} image={image} price={price} handleDelete={handleDelete} />
         ))}
       </div>
     </aside>
