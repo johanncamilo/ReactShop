@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { XCircleIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 import OrderCard from '../../Components/OrderCard'
+import { TotalPrice } from '../../utils'
 import './styles.css'
 
 const CheckoutSideMenu = () => {
@@ -16,6 +17,7 @@ const CheckoutSideMenu = () => {
 
     if (filteredProducts.length < 1) closeCheckoutSideMenu()
   }
+
   return (
     <aside
       className={`${
@@ -32,6 +34,12 @@ const CheckoutSideMenu = () => {
         {shoppingCart.map(({ id, title, image, price }) => (
           <OrderCard key={id} id={id} title={title} image={image} price={price} handleDelete={handleDelete} />
         ))}
+      </div>
+      <div className='px-6'>
+        <p className='flex justify-between items-center'>
+          <span className='font-light'>Total: </span>
+          <span className='font-medium text-2xl'>${TotalPrice()}</span>
+        </p>
       </div>
     </aside>
   )

@@ -4,7 +4,6 @@ const OrderCard = ({ id, title, image, price, handleDelete }) => {
   return (
     <div className='flex justify-between items-center mb-3'>
       <div className='flex items-center gap-2'>
-        {id}
         <figure className='w-20 h-20'>
           <img className='w-full h-full rounded-lg object-contain' src={image} alt={title} />
         </figure>
