@@ -11,7 +11,7 @@ const OrderCard = ({ id, title, image, price, handleDelete }) => {
       </div>
       <div className='fex items-center gap-2'>
         <p className='text-lg font-medium'>{price}</p>
-        <XCircleIcon onClick={() => handleDelete(id)} className='h-6 w-6 text-black-500 cursor-pointer' />
+        {handleDelete && <XCircleIcon onClick={() => handleDelete(id)} className='h-6 w-6 text-black cursor-pointer' />}
       </div>
     </div>
   )
