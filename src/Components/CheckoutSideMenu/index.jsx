@@ -21,9 +21,10 @@ const CheckoutSideMenu = () => {
   }
 
   const handleCheckout = () => {
+    const date = new Date()
     // ? object with order card info
     const orderToAdd = {
-      date: '12.12.12',
+      date: date.toLocaleDateString(),
       products: shoppingCart,
       totalProducts: shoppingCart.length,
       totalPrice: TotalPrice(shoppingCart),

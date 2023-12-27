@@ -12,8 +12,8 @@ const MyOrders = () => {
         <h1>MyOrders</h1>
       </div>
       {/* Avoiding Annoying semicolon */}
-      {order.map(({ id, totalPrice, totalProducts }, index) => (
-        <Link key={index} to={`/my-orders/${id}`}>
+      {order.map(({ totalPrice, totalProducts }, index) => (
+        <Link key={index} to={`/my-orders/${index}`}>
           <OrdersCard totalPrice={totalPrice} totalProducts={totalProducts} />
         </Link>
       ))}
