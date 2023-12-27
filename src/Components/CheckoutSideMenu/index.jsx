@@ -48,6 +48,7 @@ const CheckoutSideMenu = () => {
         </div>
       </div>
       <div className='px-6 flex-1'>
+        {/* Avoiding Annoying semicolon ⬇ */}
         {shoppingCart.map(({ id, title, image, price }) => (
           <OrderCard key={id} id={id} title={title} image={image} price={price} handleDelete={handleDelete} />
         ))}
