@@ -36,8 +36,12 @@ export const ShoppingCartProvider = ({ children }) => {
 
   // Get Products
   const [items, setItems] = useState(null)
+  console.log('💀 ~ file: index.jsx:39 ~ ShoppingCartProvider ~ items ->', items)
 
-  // Get Products by searchValue
+  // Filter Products by searchValue
+  const [filteredItems, setFilteredItems] = useState(null)
+
+  // Get searchValue
   const [searchValue, setSearchValue] = useState(null)
 
   useEffect(() => {
@@ -46,6 +50,14 @@ export const ShoppingCartProvider = ({ children }) => {
       .then(setItems)
       .catch(console.error)
   }, [])
+
+  const filteredItemsByValue = (items, searchValue) => {
+    return items?.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+  }
+
+  useEffect(() => {
+    if (searchValue) setFilteredItems(filteredItemsByValue(items, searchValue))
+  }, [items, searchValue])
 
   return (
     <ShoppingCartContext.Provider
@@ -70,6 +82,8 @@ export const ShoppingCartProvider = ({ children }) => {
         setItems,
         searchValue,
         setSearchValue,
+        filteredItems,
+        setFilteredItems,
       }}
     >
       {children}
