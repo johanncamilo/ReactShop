@@ -37,6 +37,9 @@ export const ShoppingCartProvider = ({ children }) => {
   // Get Products
   const [items, setItems] = useState(null)
 
+  // Get Products by searchValue
+  const [searchValue, setSearchValue] = useState(null)
+
   useEffect(() => {
     fetch(apiUrl)
       .then((respone) => respone.json())
@@ -65,6 +68,8 @@ export const ShoppingCartProvider = ({ children }) => {
         setOrder,
         items,
         setItems,
+        searchValue,
+        setSearchValue,
       }}
     >
       {children}
