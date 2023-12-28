@@ -1,18 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
 import Card from '../../Components/Card'
 import ProductDetail from '../../Components/ProductDetail'
-import { apiUrl } from '../../api'
+import { ShoppingCartContext } from '../../Context'
 
 const Home = () => {
-  const [items, setItems] = useState(null)
-
-  useEffect(() => {
-    fetch(apiUrl)
-      .then((respone) => respone.json())
-      .then(setItems)
-      .catch(console.error)
-  }, [])
-
+  const { items } = useContext(ShoppingCartContext)
   return (
     <>
       <h1>Home</h1>

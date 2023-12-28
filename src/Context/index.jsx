@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
+import { apiUrl } from '../api'
 
 /**
  * exporta el @createContext para ser consumido por componentes hijos usando @useContext
@@ -33,6 +34,16 @@ export const ShoppingCartProvider = ({ children }) => {
   // Shopping Cart - Order
   const [order, setOrder] = useState([])
 
+  // Get Products
+  const [items, setItems] = useState(null)
+
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((respone) => respone.json())
+      .then(setItems)
+      .catch(console.error)
+  }, [])
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -52,6 +63,8 @@ export const ShoppingCartProvider = ({ children }) => {
         setShoppingCart,
         order,
         setOrder,
+        items,
+        setItems,
       }}
     >
       {children}
