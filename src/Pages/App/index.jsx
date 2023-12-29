@@ -3,6 +3,7 @@ import { useRoutes, BrowserRouter } from 'react-router-dom'
 import { ShoppingCartProvider } from '../../Context'
 import Home from '../Home'
 import MyAccount from '../MyAccount'
+import Category from '../Category'
 import MyOrder from '../MyOrder'
 import MyOrders from '../MyOrders'
 import NotFound from '../NotFound'
@@ -16,6 +17,8 @@ const AppRoutes = () => {
   let routes = useRoutes([
     { path: '/', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
+    { path: '/mens-clothing', element: <Category category={`men's clothing`} /> },
+    { path: '/womens-clothing', element: <Category category={`women's clothing`} /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
     { path: '/my-orders/last', element: <MyOrder /> },

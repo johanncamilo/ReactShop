@@ -10,10 +10,10 @@ const Navbar = () => {
   const leftnav = [
     { to: '/', text: 'Shope', className: 'font-semibold text-lg' },
     { to: '/', text: 'All', className: '' },
-    { to: '/clothes', text: 'Clothes', className: '' },
+    { to: `/mens-clothing`, text: `Men's clothing`, className: '' },
+    { to: `/womens-clothing`, text: `Women's clothing`, className: '' },
     { to: '/electronics', text: 'Electronics', className: '' },
-    { to: '/furniture', text: 'Furniture', className: '' },
-    { to: '/toys', text: 'Toys', className: '' },
+    { to: '/jewelery', text: 'Jewelery', className: '' },
     { to: '/others', text: 'Others', className: '' },
   ]
 
