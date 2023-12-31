@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useCallback } from 'react'
 import { apiUrl } from '../api'
 
 /**
@@ -40,10 +40,10 @@ export const ShoppingCartProvider = ({ children }) => {
   // Filter Products by searchValue, category
   const [filteredItems, setFilteredItems] = useState(null)
 
-  // Get searchValue
+  // Get products by searchValue
   const [searchValue, setSearchValue] = useState(null)
 
-  // Get category
+  // Get products by category
   const [category, setCategory] = useState(null)
 
   useEffect(() => {
@@ -61,10 +61,20 @@ export const ShoppingCartProvider = ({ children }) => {
     return items?.filter((item) => item.category === category)
   }
 
+  const filterBy = useCallback((type, items, searchValue, category) => {
+    if (type === 'BY_TITLE') return filteredItemsByValue(items, searchValue)
+    if (type === 'BY_CATEGORY') return filteredItemsByCategory(items, category)
+    if (type === 'BY_TITLE_AND_CATEGORY')
+      return filteredItemsByCategory(items, category).filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+    if (!type) return items
+  }, [])
+
   useEffect(() => {
-    if (searchValue) setFilteredItems(filteredItemsByValue(items, searchValue))
-    if (category) setFilteredItems(filteredItemsByCategory(items, category))
-  }, [items, searchValue, category])
+    if (searchValue && category) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchValue, category))
+    if (searchValue && !category) setFilteredItems(filterBy('BY_TITLE', items, searchValue, category))
+    if (!searchValue && category) setFilteredItems(filterBy('BY_CATEGORY', items, searchValue, category))
+    if (!searchValue && !category) setFilteredItems(filterBy(null, items, searchValue, category))
+  }, [items, searchValue, category, filterBy])
 
   return (
     <ShoppingCartContext.Provider

@@ -8,7 +8,7 @@ import { TotalPrice } from '../../utils'
 import './styles.css'
 
 const CheckoutSideMenu = () => {
-  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, shoppingCart, setShoppingCart, counter, setCounter, order, setOrder } =
+  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, shoppingCart, setShoppingCart, counter, setCounter, order, setOrder, setSearchValue } =
     useContext(ShoppingCartContext)
 
   const handleDelete = (id) => {
@@ -32,6 +32,7 @@ const CheckoutSideMenu = () => {
 
     setOrder([...order, orderToAdd])
     setShoppingCart([])
+    setSearchValue(null)
     setCounter(0)
     closeCheckoutSideMenu()
   }

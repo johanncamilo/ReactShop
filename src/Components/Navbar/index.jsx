@@ -4,7 +4,7 @@ import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 
 const Navbar = () => {
-  const { counter, toggleCheckoutSideMenu } = useContext(ShoppingCartContext)
+  const { counter, toggleCheckoutSideMenu, setSearchValue, setCategory } = useContext(ShoppingCartContext)
   const activeStyle = 'underline underline-offset-4'
 
   const leftnav = [
@@ -27,13 +27,22 @@ const Navbar = () => {
 
   const NavLinkClass = (isActive) => (isActive ? activeStyle : undefined)
 
+  const setters = (text) => {
+    setCategory(text)
+    setSearchValue(null)
+  }
+
   return (
     <nav className='flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light bg-black/80 text-white shadow-2xl'>
       <ul className='flex items-center gap-3'>
         {leftnav.map(({ to, text, className }) => {
           return (
             <li key={text} className={className}>
-              <NavLink to={to} className={text === 'Shope' ? '' : ({ isActive }) => NavLinkClass(isActive)}>
+              <NavLink
+                to={to}
+                onClick={() => (to != '/' ? setters(text.toLocaleLowerCase()) : {})}
+                className={text === 'Shope' ? '' : ({ isActive }) => NavLinkClass(isActive)}
+              >
                 {text}
               </NavLink>
             </li>
